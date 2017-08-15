@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, Input, EventEmitter,  ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, Input, EventEmitter, ElementRef, Renderer } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
@@ -24,17 +24,15 @@ export class AddCityComponent implements OnInit {
 
   private static APPID = '2765e1be7926a66d3d64132e2164612f';
 
-
-
   @ViewChild('weatherForm') weatherForm: NgForm;
 
 
 
   weatherOfCities = [];
-  
+
   cityList = [];
 
-  city:string;
+  city: string;
 
 
   // injection
@@ -49,20 +47,24 @@ export class AddCityComponent implements OnInit {
   }
 
 
-  addCityList(cityname:string) {
+  addCityList(cityname: string) {
 
     console.log('city: %s', cityname);
 
-    this.cityList.push(cityname);
+    if (!this.cityList.includes(cityname)) {
+
+      this.cityList.push(cityname);
+    }
 
     this.weatherForm.reset();
+
   }
 
 
 
-  getWeather(cityname:string) {
+  getWeather(cityname: string) {
 
-    const cityName=cityname;
+    const cityName = cityname;
 
     console.log('city weather: %s', cityname);
 
@@ -92,20 +94,6 @@ export class AddCityComponent implements OnInit {
       });
 
   }
-
 }
 
-
-
-/* export interface WeatherData {
-
-  id: number;
-
-  main: string;
-
-  description: string;
-
-  icon: string;
-
-} */
 
